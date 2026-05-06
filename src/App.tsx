@@ -4,11 +4,12 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useSpring, useMotionValue, useTransform } from 'motion/react';
+import { motion, useScroll, useSpring, useMotionValue, useTransform, AnimatePresence } from 'motion/react';
 import { Navbar, Hero } from './components/Navigation_Hero';
 import { Skills, Projects } from './components/Skills_Projects';
 import { Timeline, Contact } from './components/Timeline_Contact';
 import { Certificates } from './components/Certificates';
+import { LoadingScreen } from './components/LoadingScreen';
 
 const CustomCursor = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -103,6 +104,7 @@ const InteractiveBackground = () => {
 };
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -111,27 +113,41 @@ export default function App() {
   });
 
   return (
-    <main className="min-h-screen bg-technical-bg selection:bg-brand-primary selection:text-technical-bg cursor-none relative">
-      <InteractiveBackground />
-      <CustomCursor />
-      <motion.div 
-        className="fixed top-0 left-0 right-0 h-1 bg-brand-primary z-[100] origin-left"
-        style={{ scaleX }}
-      />
-      
-      <Navbar />
-      
-      <Hero />
-      
-      <Skills />
-      
-      <Projects />
-      
-      <Certificates />
-      
-      <Timeline />
-      
-      <Contact />
-    </main>
+    <div className="bg-technical-bg">
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          <LoadingScreen key="loader" onComplete={() => setIsLoading(false)} />
+        ) : (
+          <motion.main 
+            key="main"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="min-h-screen bg-technical-bg selection:bg-brand-primary selection:text-technical-bg cursor-none relative"
+          >
+            <InteractiveBackground />
+            <CustomCursor />
+            <motion.div 
+              className="fixed top-0 left-0 right-0 h-1 bg-brand-primary z-[100] origin-left"
+              style={{ scaleX }}
+            />
+            
+            <Navbar />
+            
+            <Hero />
+            
+            <Skills />
+            
+            <Projects />
+            
+            <Certificates />
+            
+            <Timeline />
+            
+            <Contact />
+          </motion.main>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
