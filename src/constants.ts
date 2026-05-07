@@ -20,8 +20,8 @@ export const USER_INFO = {
   tagline: "Leveraging technology to optimize business operations and data-driven decision making. Focused on building efficient systems and web solutions.",
   email: "Denev.arrosas@hcdc.edu.ph",
   location: "Sto. Tomas, Davao del Norte",
-  github: "https://github.com/",
-  linkedin: "https://linkedin.com/",
+  github: "https://github.com/denev17",
+  linkedin: "https://www.linkedin.com/in/denev-arrosas-aa6427323/",
   avatar: "https://i.ibb.co/GQWdTTXF/a0d8ca21-41a8-4af9-9e76-5cc3ab8ba2bc.jpg",
 };
 
