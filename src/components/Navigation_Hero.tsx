@@ -258,10 +258,12 @@ export const Hero = () => {
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <MagneticButton className="px-8 py-4 bg-brand-primary text-black font-bold rounded-xl flex items-center gap-2 hover:glow-cyan transition-all group shadow-[0_0_20px_rgba(34,211,238,0.2)]">
-                Launch Project
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </MagneticButton>
+              <a href="#contact" className="block">
+                <MagneticButton className="px-8 py-4 bg-brand-primary text-black font-bold rounded-xl flex items-center gap-2 hover:glow-cyan transition-all group shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+                  Launch Project
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </MagneticButton>
+              </a>
               <div className="flex gap-4">
                 <a href={USER_INFO.github} className="glass-card p-4 hover:border-brand-primary transition-all rounded-xl active:scale-95 transition-transform">
                   <Github className="w-5 h-5 text-white" />

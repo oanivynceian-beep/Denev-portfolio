@@ -155,7 +155,7 @@ export const Contact = () => {
           </div>
           
           <p className="text-[9px] font-bold text-slate-700 uppercase tracking-[0.3em]">
-            © 2024 Nexus Operations. ARCH.V2
+            © {new Date().getFullYear()} Nexus Operations. ARCH.V2
           </p>
         </footer>
       </div>
